@@ -26,13 +26,14 @@ class CustomerAdapter extends TypeAdapter<Customer> {
       payment: fields[6] as double,
       note: fields[7] as String,
       photoPath: fields[8] as String?,
+      lastNotificationDate: fields[9] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Customer obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -50,7 +51,9 @@ class CustomerAdapter extends TypeAdapter<Customer> {
       ..writeByte(7)
       ..write(obj.note)
       ..writeByte(8)
-      ..write(obj.photoPath);
+      ..write(obj.photoPath)
+      ..writeByte(9)
+      ..write(obj.lastNotificationDate);
   }
 
   @override

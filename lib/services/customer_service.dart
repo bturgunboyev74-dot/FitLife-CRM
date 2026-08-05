@@ -3,7 +3,6 @@ import 'package:hive/hive.dart';
 import '../models/customer.dart';
 
 class CustomerService {
-
   static Box<Customer> get box =>
       Hive.box<Customer>('customers');
 
@@ -19,9 +18,19 @@ class CustomerService {
   }
 
   static Future<void> updateCustomer(
-      int index,
-      Customer customer,
-      ) async {
+    int index,
+    Customer customer,
+  ) async {
     await box.putAt(index, customer);
+  }
+
+  static Customer? getCustomerById(String id) {
+    try {
+      return customers.firstWhere(
+        (customer) => customer.id == id,
+      );
+    } catch (_) {
+      return null;
+    }
   }
 }

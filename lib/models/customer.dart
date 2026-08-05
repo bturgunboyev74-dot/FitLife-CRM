@@ -4,7 +4,6 @@ part 'customer.g.dart';
 
 @HiveType(typeId: 0)
 class Customer extends HiveObject {
-
   @HiveField(0)
   String id;
 
@@ -32,16 +31,20 @@ class Customer extends HiveObject {
   @HiveField(8)
   String? photoPath;
 
+  // Oxirgi Telegram eslatmasi yuborilgan sana
+  @HiveField(9)
+  DateTime? lastNotificationDate;
 
   Customer({
-  required this.id,
-  required this.name,
-  required this.phone,
-  required this.membership,
-  required this.startDate,
-  required this.endDate,
-  required this.payment,
-  required this.note,
-  this.photoPath,
-});
+    required this.id,
+    required this.name,
+    required this.phone,
+    required this.membership,
+    required this.startDate,
+    required this.endDate,
+    required this.payment,
+    required this.note,
+    this.photoPath,
+    this.lastNotificationDate,
+  });
 }
