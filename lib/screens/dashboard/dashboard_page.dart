@@ -12,6 +12,8 @@ import '../memberships/memberships_page.dart';
 
 import '../../pages/telegram_settings_page.dart';
 import '../settings/settings_page.dart';
+import 'package:fitlife_crm/pages/update_page.dart';
+import '../reports/reports_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -537,17 +539,18 @@ GridView.count(
     ),
 
     DashboardCard(
-      icon: Icons.bar_chart_rounded,
-      title: "Hisobotlar",
-      color: Colors.deepPurple,
-      onTap: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("Hisobotlar moduli ishlab chiqilmoqda"),
-          ),
-        );
-      },
-    ),
+  icon: Icons.bar_chart_rounded,
+  title: "Hisobotlar",
+  color: Colors.deepPurple,
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const ReportsPage(),
+      ),
+    );
+  },
+),
 
    DashboardCard(
   icon: Icons.telegram,
@@ -558,6 +561,20 @@ GridView.count(
       context,
       MaterialPageRoute(
         builder: (_) => const TelegramSettingsPage(),
+      ),
+    );
+  },
+),
+
+DashboardCard(
+  icon: Icons.system_update,
+  title: "Yangilash",
+  color: Colors.indigo,
+  onTap: () {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => const UpdatePage(),
       ),
     );
   },
